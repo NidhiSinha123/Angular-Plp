@@ -1,0 +1,86 @@
+<div class="py-md-5 py-4 border-bottom">
+        <div class="container">
+          <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
+            <div class="col-md-4 order-md-2 mb-2 mb-md-0 align-items-center text-center">
+              <a class="navbar-brand" href="adminhome" ><p style="color: cornflowerblue;">Survey Solutions</p> </a>
+            </div>
+            <div class="col-md-4 order-md-1 d-flex topper mb-md-0 mb-2 align-items-center text-md-right">
+              <div >
+                <span></span>
+              </div>
+              <div class="pr-md-4 pl-md-0 pl-3 text">
+                
+              </div>
+            </div>
+            <div class="col-md-4 order-md-3 d-flex topper mb-md-0 align-items-center">
+              <div><span ></span></div>
+              <div class="text pl-3 pl-md-3">
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container d-flex align-items-center">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+          </button>
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav m-auto">
+               
+                <li class="nav-item"><a href="addSurvey" class="nav-link">Add Survey</a></li>
+                <li class="nav-item"><a href="deleteSurvey" class="nav-link">Delete Survey</a></li>
+                <li class="nav-item"><a href="addquestion" class="nav-link">Add Question</a></li>
+                <li class="nav-item"><a href="deletequestion" class="nav-link">Delete Question</a></li>
+                <li class="nav-item"><a href="assignsurvey" class="nav-link">Assign Survey</a></li>
+                <li class="nav-item"><a href="review" class="nav-link">Review Survey</a></li>
+                <li class="nav-item"><a href="logout" class="nav-link">LogOut</a></li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+<h4><p class="font-weight-bold" style="color: dodgerblue; text-align: center;">Delete Question</p></h4>
+<table class="table table-list-search" style='width: 70%; margin: auto;'>
+    <tr>
+        <th>Survey Id</th>
+        <th>Survey Name</th>
+        <th>Survey Description</th>
+
+        <th></th>
+        
+    </tr>
+    <tr *ngFor="let survey of surveyList | paginate: { itemsPerPage: 10, currentPage: p }">       
+        <td>{{survey.surveyId}}</td>
+        <td>{{survey.surveyName}}</td>
+        <td>{{survey.surveyDescription}}</td>
+        <td *ngIf='(surveyId==null) else goback'>
+            <input type="submit" value="Select" (click)="selectSurvey(survey)"></td>
+        <ng-template #goback><td><input type="submit" value="Change Survey" (click)="changeSurvey()"></td></ng-template>
+    </tr>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</table> 
+
+<table class="table table-list-search" style='width: 70%; margin: auto;' *ngIf='(questionList != null)'>
+
+        <tr>
+                <th>Question Id</th>
+                <th>Question Description</th>
+                <th></th>
+               
+      
+        </tr>
+        <tr *ngFor="let question of questionList | paginate: { itemsPerPage: 10, currentPage: p }">       
+                <td>{{question.questionId}}</td>
+                <td>{{question.questionDescription}}</td>
+               
+            <td *ngIf='(questionId==null) else goback'>
+                    <input type="submit" value="Delete" (click)="delete(question)"></td>
+                <ng-template #goback><td><input type="submit" value="Confirm delete?" (click)="confirmDelete()"></td></ng-template>
+        </tr>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </table> 
+    
+    <ng-template #noTests [ngIf]="(surveyId != null) && (questionList == null)">Sorry, no test present in this center</ng-template>
+   

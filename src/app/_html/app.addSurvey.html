@@ -1,0 +1,95 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Survey Management System</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="assets/css/gijgo.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/slicknav.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container d-flex align-items-center">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+          </button>
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav m-auto">
+               
+                <li class="nav-item"><a href="addSurvey" class="nav-link">Add Survey</a></li>
+                <li class="nav-item"><a href="deleteSurvey" class="nav-link">Delete Survey</a></li>
+                <li class="nav-item"><a href="addquestion" class="nav-link">Add Question</a></li>
+                <li class="nav-item"><a href="deletequestion" class="nav-link">Delete Question</a></li>
+                <li class="nav-item"><a href="assignsurvey" class="nav-link">Assign Survey</a></li>
+                <li class="nav-item"><a href="review" class="nav-link">Review Survey</a></li>
+                <li class="nav-item"><a href="logout" class="nav-link">LogOut</a></li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <br><br><br><br>
+  <form name="form" #f="ngForm" novalidate class="col-lg-6 offset-lg-3">
+    <div class="form-group">
+        <div>
+            <label for="surveyTitle">Survey Title</label>
+        </div>
+        <div class="col-sm-16">
+            <input type="text" class="form-control" name="surveyTitle" [(ngModel)]="model.surveyTitle" 
+        #surveyTitle="ngModel" [ngClass]="{'is-invalid':f.submitted && surveyTitle.invalid }"
+        required/>
+      <!--  <div class="invalid-feedback">
+                <div>Center name is required</div>
+        </div>-->
+        <div *ngIf="surveyTitle.invalid && (surveyTitle.dirty ||surveyTitle.touched || f.submitted)"
+            class="alert alert-danger">
+            <div *ngIf="surveyTitle.errors.required">
+              Survey name is required.
+            </div>
+          </div>
+       
+    </div>
+    </div>
+    <div class="form-group">
+        <div><label for="surveyDescription">Survey Description</label></div>
+        <div class="col-sm-16">
+            <input type="text" class="form-control" name="surveyDescription" [(ngModel)]="model.surveyDescription"
+            #surveyDescription="ngModel" [ngClass]="{'is-invalid':f.submitted && surveyDescription.invalid}"
+            required/>
+            <div *ngIf="surveyDescription.invalid && (surveyDescription.dirty || surveyDescription.touched || f.submitted)"
+            class="alert alert-danger">
+        <div *ngIf="surveyDescription.errors.required">Survey Description is required</div>
+        </div>
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-success"
+     (click)="addSurvey()" class="btn btn-primary mx-auto d-block"
+     [disabled]="f.form.invalid"
+     >Submit</button>
+  </form>

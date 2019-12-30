@@ -1,0 +1,126 @@
+<div class="py-md-5 py-4 border-bottom">
+    <div class="container">
+      <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
+        <div class="col-md-4 order-md-2 mb-2 mb-md-0 align-items-center text-center">
+          <a class="navbar-brand" href="adminhome" ><p style="color: cornflowerblue;">Survey Solutions</p> </a>
+        </div>
+        <div class="col-md-4 order-md-1 d-flex topper mb-md-0 mb-2 align-items-center text-md-right">
+          <div >
+            <span></span>
+          </div>
+          <div class="pr-md-4 pl-md-0 pl-3 text">
+            
+          </div>
+        </div>
+        <div class="col-md-4 order-md-3 d-flex topper mb-md-0 align-items-center">
+          <div><span ></span></div>
+          <div class="text pl-3 pl-md-3">
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container d-flex align-items-center">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav m-auto">
+           
+            <li class="nav-item"><a href="addSurvey" class="nav-link">Add Survey</a></li>
+            <li class="nav-item"><a href="deleteSurvey" class="nav-link">Delete Survey</a></li>
+            <li class="nav-item"><a href="addquestion" class="nav-link">Add Question</a></li>
+            <li class="nav-item"><a href="deletequestion" class="nav-link">Delete Question</a></li>
+            <li class="nav-item"><a href="assignsurvey" class="nav-link">Assign Survey</a></li>
+            <li class="nav-item"><a href="review" class="nav-link">Review Survey</a></li>
+            <li class="nav-item"><a href="logout" class="nav-link">LogOut</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+<form name="form" #f="ngForm" novalidate class="col-lg-6 offset-lg-3">
+        <!-- <div class="form-group">
+          <div class="col-md-4 col-lg-4" >Select Survey</div>
+          
+              <select class="form-control" name="surveySelected" [(ngModel)]="survey1.surveyId" #surveySelected="ngModel"  
+              [ngClass]="{'invalid-data': surveySelected.invalid && f.submitted, 'valid-data': surveySelected.valid && f.submitted}" required>  
+              
+              <option *ngFor="let survey of surveyList" [value]="survey1.surveyId" >{{survey.surveyName}}</option></select>
+              <div *ngIf="surveySelected.invalid && f.submitted">  
+                  <span style="color: red;">Please Select Survey.</span>  
+                </div>  
+      
+            </div> -->
+            <div class="form-group">
+              <div class="col-md-4 col-lg-4" >Select Survey</div>
+              
+                  <select class="form-control" name="centerSelected" [(ngModel)]="survey1.surveyId" #centerSelected="ngModel"  
+                  [ngClass]="{'invalid-data': centerSelected.invalid && f.submitted, 'valid-data': centerSelected.valid && f.submitted}" required>  
+                  
+                  <option *ngFor="let survey of surveyList" [value]="survey.surveyId" >{{survey.surveyTitle}}</option></select>
+                  <div *ngIf="centerSelected.invalid && f.submitted">  
+                      <span style="color: red;">Please Select Survey.</span>  
+                    </div>  
+          
+                </div>
+           
+        <!-- <div class="form-group">
+          <div><label for="description">Question Description</label></div>
+         <input type="text" class="form-control" name="questionDescription" [(ngModel)]="model.questionDescription"
+          #questionDescription="ngModel" [ngClass]="{'is-invalid':f.submitted && questionDescription.invalid}" required/>
+          <div class="invalid-feedback"><div>Question Description is required</div>
+          </div>
+        </div> -->
+
+        <div class="form-group">
+          <div><label for="surveyDescription">Question Description</label></div>
+          <div class="col-sm-16">
+              <input type="text" class="form-control" name="questionDescription" [(ngModel)]="model.questionDescription"
+              #questionDescription="ngModel" [ngClass]="{'is-invalid':f.submitted && questionDescription.invalid}"
+              required/>
+              <div *ngIf="questionDescription.invalid && (questionDescription.dirty || questionDescription.touched || f.submitted)"
+              class="alert alert-danger">
+          <div *ngIf="surveyDescription.errors.required">Survey Description is required</div>
+          </div>
+          </div>
+  
+      </div>
+
+
+        <div class="form-group">
+        <div><label for="questionType">Question Type</label></div>
+        <select class="form-control" name="typeSelected" [(ngModel)]="model.questionType" #typeSelected="ngModel"  
+        [ngClass]="{'invalid-data': typeSelected.invalid && f.submitted, 'valid-data': typeSelected.valid && f.submitted}" required>  
+        
+        <option *ngFor="let qtype of QuestionType" >{{qtype}}</option></select>
+        <div *ngIf="typeSelected.invalid && f.submitted">  
+            <span style="color: red;">Please Select Question Type.</span>  
+          </div>          
+         </div>
+         <div *ngIf="model.questionType=='singlechoice' || model.questionType=='multiplechoice'">
+           <form (ngSubmit)="onSubmit()">
+              <div class="form-row" *ngFor="let obj of optionArray,let i=index">
+      
+                  <div class="form-group col-md-4">
+                    <input type="text" class="form-control" name="optionDescription{{i}}" [(ngModel)]="obj.optionDescription">
+                  </div>
+                  <div class="form-group col-md-4">
+                      <span (click)="deleteOption(i)" class="btn btn-danger">-</span>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <span (click)="addOption()" class="btn btn-success">+</span>
+                </div>
+                </form>
+              </div>
+            
+              
+        <button type="submit"  value="Add Question" class="btn btn-success" (click)="addQuestion(survey1.surveyId)" class="btn btn-primary mx-auto d-block">Add question</button>
+        
+       
+       
+       
+      </form>

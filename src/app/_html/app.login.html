@@ -1,0 +1,217 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Survey Management System</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="assets/css/gijgo.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/slicknav.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header>
+        <div class="header-area ">
+            <div id="sticky-header" class="main-header-area">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-3 col-lg-2">
+                            
+                        </div>
+                        <div class="col-xl-6 col-lg-7">
+                            <div class="main-menu  d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="index.html">home</a></li>
+                                        <li><a href="login">login</a></li>
+                                        <li><a href="register">register</a></li>
+                                        </ul>
+                                    </nav>
+                            </div>
+                        </div>
+                       
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header-end -->
+  <body style="background-image:url('/assets/images/home1 (1).jpg') ">
+    <br><br><br>
+<form name="form" #f="ngForm" novalidate class="col-lg-6 offset-lg-3 "> 
+    <div class="form-group">
+            <div>
+                <label for="email"><b>Email</b></label>
+            </div>
+            <div class="col-sm-16"><input type="text" class="form-control" name="userEmail" [(ngModel)]="useremail" 
+                #userEmail="ngModel" [ngClass]="{'is-invalid':f.submitted && userEmail.invalid }" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}"
+                required/>
+
+                <div *ngIf="userEmail.invalid && (userEmail.dirty ||userEmail.touched || f.submitted)"
+                    class="alert alert-danger">
+                    <div *ngIf="userEmail.errors.required">
+                      Email is required.
+                    </div>
+                    <div *ngIf="userEmail.errors.pattern">Email must be a valid email address</div>
+                  </div>
+            </div>
+     </div><br><br>
+     <div class="form-group">
+            <div>
+                <label for="password"><b>Password</b></label>
+            </div>
+            <div class="col-sm-16"><input type="password" class="form-control" name="userPassword" [(ngModel)]="password" 
+                #userPassword="ngModel" [ngClass]="{'is-invalid':f.submitted && userPassword.invalid }" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})"
+                required/>
+
+                <div *ngIf="userPassword.invalid && (userPassword.dirty ||userPassword.touched || f.submitted)"
+                    class="alert alert-danger">
+                    <div *ngIf="userPassword.errors.required">
+                      Password is required.
+                    </div>
+                    <div *ngIf="userPassword.errors.pattern">Enter valid password</div>
+                  </div>
+            </div>
+     </div><br>
+     <button type="submit" class="btn btn-success" (click)="checkLogin()"  
+     [disabled]="f.form.invalid"
+     class="btn btn-primary mx-auto d-block">Submit</button>
+</form> <br><br><br><br><br><br><br><br><br><br><br><br><br><br></body>
+<footer class="footer">
+  <div class=" container">
+      <div class="pro_border">
+              <div class="row">
+                      <div class="col-xl-6 col-md-6">
+                          <div class="lets_projects">
+                              <h3>Let’s Start your project, <a href="#">Mail Us</a> </h3>
+                          </div>
+                      </div>
+                      <div class="col-xl-6 col-md-6">
+                          <div class="phone_number">
+                              <h3>+10 673 563 629</h3>
+                              <a href="#">support@seogo.com</a>
+                          </div>
+                      </div>
+                  </div>
+      </div>
+  </div>
+  <div class="footer_top">
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-3 col-md-6 col-lg-3">
+                  <div class="footer_widget">
+                      <div class="footer_logo">
+                          <a href="#">
+                              <img src="assets/img/footer_logo.png" alt="">
+                          </a>
+                      </div>
+                      <p>
+                              Esteem spirit temper too say adieus who direct esteem. It esteems luckily or picture placing drawing.
+                      </p>
+                      <div class="socail_links">
+                          <ul>
+                              <li>
+                                  <a href="#">
+                                      <i class="ti-facebook"></i>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="#">
+                                      <i class="ti-twitter-alt"></i>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="#">
+                                      <i class="fa fa-instagram"></i>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+
+                  </div>
+              </div>
+              <div class="col-xl-2 col-md-6 col-lg-3">
+                  <div class="footer_widget">
+                      <h3 class="footer_title">
+                              Services
+                      </h3>
+                      <ul>
+                          <li><a href="#">Marketing &amp; SEO</a></li>
+                          <li><a href="#"> Startup</a></li>
+                          <li><a href="#">Finance solution</a></li>
+                          <li><a href="#">Food</a></li>
+                          <li><a href="#">Travel</a></li>
+                      </ul>
+
+                  </div>
+              </div>
+              <div class="col-xl-2 col-md-6 col-lg-2">
+                  <div class="footer_widget">
+                      <h3 class="footer_title">
+                              Useful Links
+                      </h3>
+                      <ul>
+                          <li><a href="#">About</a></li>
+                          <li><a href="#">Blog</a></li>
+                          <li><a href="#"> Contact</a></li>
+                          <li><a href="#">Appointment</a></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-xl-4 offset-xl-1 col-md-6 col-lg-4">
+                      <div class="footer_widget">
+                              <h3 class="footer_title">
+                                      Subscribe
+                              </h3>
+                              <form action="#" class="newsletter_form">
+                                  <input type="text" placeholder="Enter your mail">
+                                  <button type="submit">Subscribe</button>
+                              </form>
+                              <p class="newsletter_text">Esteem spirit temper too say adieus who direct esteem esteems luckily.</p>
+                          </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="copy-right_text">
+      <div class="container">
+          <div class="footer_border"></div>
+          <div class="row">
+              <div class="col-xl-12">
+                  <p class="copy_right text-center">
+                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div>
+</footer>

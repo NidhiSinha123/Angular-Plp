@@ -1,0 +1,92 @@
+<div class="py-md-5 py-4 border-bottom">
+        <div class="container">
+          <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
+            <div class="col-md-4 order-md-2 mb-2 mb-md-0 align-items-center text-center">
+              <a class="navbar-brand" href="adminhome" ><p style="color: cornflowerblue;">Survey Solutions</p> </a>
+            </div>
+            <div class="col-md-4 order-md-1 d-flex topper mb-md-0 mb-2 align-items-center text-md-right">
+              <div >
+                <span></span>
+              </div>
+              <div class="pr-md-4 pl-md-0 pl-3 text">
+                
+              </div>
+            </div>
+            <div class="col-md-4 order-md-3 d-flex topper mb-md-0 align-items-center">
+              <div><span ></span></div>
+              <div class="text pl-3 pl-md-3">
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container d-flex align-items-center">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+          </button>
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav m-auto">
+               
+                <li class="nav-item"><a href="givesurvey" class="nav-link">Give Survey</a></li>
+                <li class="nav-item"><a href="logout" class="nav-link">LogOut</a></li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>	
+    
+<div *ngIf="questionListLength>0 else notest">
+        <form>
+        <div class="form-group">
+         <div class="container" >{{questionList[num].questionDescription}}</div>
+         </div>
+         <div *ngIf="questionList[num].questionType=='singlechoice'" class="container">
+            <div class="form-group">
+                    <input type = "radio" class="radio" name = "chosenAnswer"  value="1" />{{questionList[num].questionOptions[0]}}<br>
+                    <input type = "radio" class="radio" name = "chosenAnswer"  value="2" />{{questionList[num].questionOptions[1]}}<br>
+                    <input type = "radio" class="radio" name = "chosenAnswer"  value="3" />{{questionList[num].questionOptions[2]}}<br>
+                    <input type = "radio" class="radio" name = "chosenAnswer"  value="4" />{{questionList[num].questionOptions[3]}}<br> 
+         </div>
+        </div>
+        
+                <div *ngIf="questionList[num].questionType=='multiplechoice'" class="container">
+                        <div>
+                            <input type = "checkbox" class="radio" name = "chosenAnswer1"  value="1" />{{questionList[num].questionOptions[0]}}<br>
+                            <input type = "checkbox" class="radio" name = "chosenAnswer2"  value="2" />{{questionList[num].questionOptions[1]}}<br>
+                            <input type = "checkbox" class="radio" name = "chosenAnswer3"  value="3" />{{questionList[num].questionOptions[2]}}<br>
+                            <input type = "checkbox" class="radio" name = "chosenAnswer4"  value="4" />{{questionList[num].questionOptions[3]}}<br>
+                        </div>
+                       
+        </div>
+        <div class="col-sm-16">
+                <div *ngIf="questionList[num].questionType=='multiline'" class="container">
+                        <div class="form-group">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                              </div>
+                </div>
+        </div>
+        
+        <div *ngIf="questionList[num].questionType=='singleline'" class="container">
+                <div>
+                    <input type = "text"/><br>
+                   </div>
+               
+            </div>
+            <div class = "row">
+                    <div class="col-lg-5">
+                    </div>
+                    <div class = "col-lg-7"><button type="button" id = "button" class = "btn btn-primary" (click) = "nextQuestion()">Next Question</button></div>
+                </div>
+      </form>
+       
+       
+      
+      
+</div>
+<ng-template #notest>
+    <div class="section-header">
+      <h3 class="section-title">No Survey Assigned yet</h3>
+    </div>
+  </ng-template>

@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container d-flex align-items-center">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav m-auto">
+           
+            <li class="nav-item"><a href="addSurvey" class="nav-link">Add Survey</a></li>
+            <li class="nav-item"><a href="deleteSurvey" class="nav-link">Delete Survey</a></li>
+            <li class="nav-item"><a href="addquestion" class="nav-link">Add Question</a></li>
+            <li class="nav-item"><a href="deletequestion" class="nav-link">Delete Question</a></li>
+            <li class="nav-item"><a href="assignsurvey" class="nav-link">Assign Survey</a></li>
+            <li class="nav-item"><a href="review" class="nav-link">Review Survey</a></li>
+            <li class="nav-item"><a href="logout" class="nav-link">LogOut</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+<table class="table">
+        <tr>
+            <th scope="col">Survey Id</th>
+            <th scope="col">Survey Title</th>
+            <th scope="col">Survey Description</th>
+            <th scope="col">Action</th>
+            
+
+        </tr>
+        <tr *ngFor="let survey of surveyList | paginate: { itemsPerPage: 10, currentPage: p }">      
+            <td>{{survey.surveyId}}</td>
+            <td>{{survey.surveyTitle}}</td>
+            <td>{{survey.surveyDescription}}</td>
+            <td>
+            <input type="button"
+            class="btn btn-default"
+            mwlConfirmationPopover
+            [popoverTitle]="popoverTitle"
+            [popoverMessage]="popoverMessage+' '+survey.surveyName"
+            placement="left"
+           
+            (confirm)=" deleteSurvey(survey.surveyId)"
+            (cancel)="cancelClicked = true"
+            
+            value="delete">
+</td>
+
+        </tr>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+       
+    </table> 
+    <br><br>
